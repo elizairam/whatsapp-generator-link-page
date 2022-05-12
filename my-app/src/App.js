@@ -28,7 +28,6 @@ function App() {
       )}&text=${formatMessage(formData.message)}`
     );
     setIsClick(!isClick);
-    console.log(formData);
   };
 
   const resetForm = () => {
