@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Ubuntu+Mono:wght@700&display=swap');
+
+* {
+  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  margin: 20px;
+}
+
+.App-header {
+  background: linear-gradient(59deg, #008767 0%, #212A3C 43%, #212A3C 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .App-header {
+    flex-direction:column;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.form-control:focus {
+  background-color: #90E6BC;
+}
