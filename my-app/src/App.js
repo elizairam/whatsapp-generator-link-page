@@ -2,14 +2,14 @@ import { useState } from "react";
 import happy from "./assets/img1.png";
 import party from "./assets/img2.png";
 import "./App.css";
-import { formatMobileNumber, formatMessage } from "./utils/formatFunctions"
+import { formatMobileNumber, formatMessage } from "./utils/formatFunctions";
 
 function App() {
   const [isClick, setIsClick] = useState(false);
   const [formData, setFormData] = useState({
     numberMobile: "",
     message: "",
-    device: "",
+    device: "api",
   });
   const [whatsappApi, setWhatsappApi] = useState("");
 
@@ -22,20 +22,13 @@ function App() {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    if (formData.device === "mobile") {
-      setWhatsappApi(
-        `https://api.whatsapp.com/send?phone=${formatMobileNumber(
-          formData.numberMobile
-        )}&text=${formatMessage(formData.message)}`
-      );
-    } else {
-      setWhatsappApi(
-        `https://web.whatsapp.com/send?phone=${formatMobileNumber(
-          formData.numberMobile
-        )}&text=${formatMessage(formData.message)}`
-      );
-    }
+    setWhatsappApi(
+      `https://${formData.device}.whatsapp.com/send?phone=${formatMobileNumber(
+        formData.numberMobile
+      )}&text=${formatMessage(formData.message)}`
+    );
     setIsClick(!isClick);
+    console.log(formData);
   };
 
   const resetForm = () => {
@@ -43,7 +36,7 @@ function App() {
     setFormData({
       numberMobile: "",
       message: "",
-      device: "",
+      device: "api",
     });
   };
 
@@ -64,23 +57,23 @@ function App() {
                   número do celular
                 </label>
                 <div class="input-group has-validation">
-                <span class="input-group-text" id="inputGroupPrepend">+55</span>
-                <input
-                  class="form-control form-control-lg"
-                  type="text"
-                  placeholder="1199999999"
-                  aria-label=".form-control-lg example"
-                  name="numberMobile"
-                  value={formData.numberMobile}
-                  onChange={changeHandler}
-                  tabIndex={0}
-                  maxLength={11}
-                  minLength={11}
-                  required
-                ></input>
+                  <span class="input-group-text" id="inputGroupPrepend">
+                    +55
+                  </span>
+                  <input
+                    class="form-control form-control-lg"
+                    type="text"
+                    placeholder="1199999999"
+                    aria-label=".form-control-lg example"
+                    name="numberMobile"
+                    value={formData.numberMobile}
+                    onChange={changeHandler}
+                    tabIndex={0}
+                    maxLength={11}
+                    minLength={10}
+                    required
+                  ></input>
                 </div>
-
-
                 <label for="message" class="form-label">
                   mensagem
                 </label>
@@ -99,12 +92,11 @@ function App() {
                     class="form-check-input"
                     type="radio"
                     name="device"
-                    id="desktop"
-                    value="desktop"
-                    onChange={changeHandler}
-                    checked
+                    id="web"
+                    value="web"
+                    onClick={changeHandler}
                   />
-                  <label class="form-check-label" for="desktop">
+                  <label class="form-check-label" for="web">
                     web ou desktop
                   </label>
                 </div>
@@ -113,11 +105,11 @@ function App() {
                     class="form-check-input"
                     type="radio"
                     name="device"
-                    id="mobile"
-                    value="mobile"
-                    onChange={changeHandler}
+                    id="api"
+                    value="api"
+                    onClick={changeHandler}
                   />
-                  <label class="form-check-label" for="mobile">
+                  <label class="form-check-label" for="api">
                     mobile ou celular
                   </label>
                 </div>
@@ -128,6 +120,7 @@ function App() {
                 class="btn btn-success"
                 onClick={submitHandler}
                 style={{ backgroundColor: "#21CC79" }}
+                disabled={formData.numberMobile.length < 10 ? true : false}
               >
                 {"Gerar whatsapp link"}
               </button>
