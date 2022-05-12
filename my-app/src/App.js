@@ -119,7 +119,7 @@ function App() {
                 class="btn btn-success"
                 onClick={submitHandler}
                 style={{ backgroundColor: "#21CC79" }}
-                disabled={formData.numberMobile.length < 10 ? true : false}
+                disabled={formData.numberMobile.length < 10}
               >
                 {"Gerar whatsapp link"}
               </button>
