@@ -41,9 +41,13 @@ function App() {
 
   return (
     <div className="App">
-      <div className="App-header">
+      <div className="Content">
         <div>
-          <img src={!isClick ? happy : party} className="App-logo" alt="logo" />
+          <img
+            src={!isClick ? happy : party}
+            className="App-logo"
+            alt="ilustração de caixa de diálogo como emoticon feliz"
+          />
         </div>
         <div>
           <header>
@@ -51,16 +55,16 @@ function App() {
           </header>
           {!isClick ? (
             <>
-              <form>
-                <label for="numberMobile" class="form-label">
+              <form data-testid="form-data">
+                <label htmlFor="numberMobile" className="form-label">
                   número do celular
                 </label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend">
+                <div className="input-group has-validation">
+                  <span className="input-group-text" id="inputGroupPrepend">
                     +55
                   </span>
                   <input
-                    class="form-control form-control-lg"
+                    className="form-control form-control-lg"
                     type="text"
                     placeholder="1199999999"
                     aria-label=".form-control-lg example"
@@ -73,11 +77,11 @@ function App() {
                     required
                   ></input>
                 </div>
-                <label for="message" class="form-label">
+                <label htmlFor="message" className="form-label">
                   mensagem
                 </label>
                 <textarea
-                  class="form-control"
+                  className="form-control"
                   placeholder="Olá, gostaria de entrar em contato..."
                   name="message"
                   value={formData.message}
@@ -86,29 +90,30 @@ function App() {
                   tabIndex={0}
                 ></textarea>
                 <br />
-                <div class="form-check form-check-inline">
+                <div className="form-check form-check-inline">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="device"
                     id="web"
                     value="web"
                     onClick={changeHandler}
                   />
-                  <label class="form-check-label" for="web">
+                  <label className="form-check-label" htmlFor="web">
                     web ou desktop
                   </label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div className="form-check form-check-inline">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="device"
                     id="api"
                     value="api"
                     onClick={changeHandler}
+                    defaultChecked
                   />
-                  <label class="form-check-label" for="api">
+                  <label className="form-check-label" htmlFor="api">
                     mobile ou celular
                   </label>
                 </div>
@@ -116,7 +121,8 @@ function App() {
 
               <br />
               <button
-                class="btn btn-success"
+                id="buttonGenerateLink"
+                className="btn btn-success"
                 onClick={submitHandler}
                 style={{ backgroundColor: "#21CC79" }}
                 disabled={formData.numberMobile.length < 10}
@@ -127,9 +133,9 @@ function App() {
           ) : (
             <>
               {"Clique para copiar o link gerado"}
-              <label for="copyArea" class="form-label"></label>
+              <label htmlFor="copyArea" className="form-label"></label>
               <input
-                class="form-control form-control-lg"
+                className="form-control form-control-lg"
                 type="text"
                 aria-label=".form-control-lg example"
                 name="mobileApi"
@@ -142,7 +148,11 @@ function App() {
               ></input>
 
               <br />
-              <button class="btn btn-info" onClick={resetForm}>
+              <button
+                id="buttonNewLink"
+                className="btn btn-info"
+                onClick={resetForm}
+              >
                 {"Novo link"}
               </button>
             </>

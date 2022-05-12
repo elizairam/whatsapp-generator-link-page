@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Ubuntu+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@700&display=swap');
 
 * {
-  font-family: 'Space Grotesk', sans-serif;
   font-family: 'Ubuntu Mono', monospace;
 }
 
@@ -15,7 +14,7 @@
   margin: 20px;
 }
 
-.App-header {
+.Content {
   background: linear-gradient(59deg, #008767 0%, #212A3C 43%, #212A3C 100%);
   min-height: 100vh;
   display: flex;
@@ -28,7 +27,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .App-header {
+  .Content {
     flex-direction:column;
   }
 }
