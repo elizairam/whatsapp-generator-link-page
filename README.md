@@ -1,5 +1,15 @@
 # whatsapp-generator-link-page 💬
-Projeto de site para gerar link para whatsapp 
+💬 Esse projeto é um site gerador de links para whatsapp
+
+## Tecnologias utilizadas
+- ReactJS
+- Javascript
+- Bootstrap
+- Netlify
+
+## Créditos
+💬 Ilustração : [Blipinho](https://design.take.net/240287753/p/50fbdc-bibliotecas-de-ilustraes/b/813b34)
+
 
 # Getting Started with Create React App
 
